@@ -41,5 +41,7 @@ document.addEventListener('DOMContentLoaded', function(){
             removeTodo(row.getAttribute('id'));
         }
         row.children[3].appendChild(removeBtn);
+        title.value = '';
+        description.value = '';
     }
 })
