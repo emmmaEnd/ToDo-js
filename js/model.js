@@ -2,7 +2,7 @@ export default class Model {
     constructor(){
         this.view = null;
         this.todos = JSON.parse(localStorage.getItem('todos'));
-        if(!this.todos || this.todos.length > 1){
+        if(!this.todos || this.todos.length < 1){
             this.todos = [
             {
                 id:0,
@@ -24,7 +24,7 @@ export default class Model {
     }
 
     save(){
-        localStorage.setItem('todos',JSON.stringify(this.todos));
+        localStorage.setItem('todos', JSON.stringify(this.todos));
     }
 
     getTodos(){
@@ -63,3 +63,4 @@ export default class Model {
         //console.log(this.todos[index]);
     }
 }
+

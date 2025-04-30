@@ -12,4 +12,3 @@ export default class Alert {
       this.alert.classList.add('d-none');
     }
   }
-  

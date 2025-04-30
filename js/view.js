@@ -1,4 +1,5 @@
 import addTodo from './components/add-todo.js';
+
 export default class View {
     constructor() {
       this.model = null;
@@ -33,7 +34,7 @@ export default class View {
     
 
     createRow(todo){
-      const row =table.insertRow();
+      const row = table.insertRow();
         row.setAttribute('id', todo.id);
         row.innerHTML= `
         <td>${todo.title}</td>
