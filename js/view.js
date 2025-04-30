@@ -3,7 +3,7 @@ export default class View {
     constructor() {
       this.model = null;
       this.table = document.getElementById('table');
-      this.addTodoForm = new AddTodo();
+      this.addTodoForm = new addTodo();
       this.addTodoForm.onClick((title, description) => this.addTodo(title,description));
       
     }
