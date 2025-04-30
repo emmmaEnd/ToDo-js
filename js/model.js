@@ -27,7 +27,7 @@ export default class Model {
         localStorage.setItem('todos',JSON.stringify(this.todos));
     }
 
-    setTodos(){
+    getTodos(){
         return this.todos;
     }
     findTodo(id){
