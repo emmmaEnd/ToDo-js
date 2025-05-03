@@ -73,8 +73,30 @@ export default class View {
     document.getElementById(id).remove();
   }
 
+  moveUp(id) {
+    this.model.moveUp(id);
+    this.refresh();
+  }
+  
+  moveDown(id) {
+    this.model.moveDown(id);
+    this.refresh();
+  }
+  
+  
+  refresh() {
+  const tbody = this.table.querySelector('tbody');
+  tbody.innerHTML = '';
+  this.render();
+}
+
+
+
+
   createRow(todo) {
-    const row = table.insertRow();
+    const tbody = this.table.querySelector('tbody');
+    const row = tbody.insertRow();
+    //const row = this.table.insertRow();
     row.setAttribute('id', todo.id);
     row.innerHTML = `
       <td>${todo.title}</td>
@@ -111,5 +133,19 @@ export default class View {
     removeBtn.innerHTML = '<i class="fa fa-trash"></i>';
     removeBtn.onclick = () => this.removeTodo(todo.id);
     row.children[3].appendChild(removeBtn);
+
+    // Botón SUBIR (↑)
+    const upBtn = document.createElement('button');
+    upBtn.classList.add('btn', 'btn-secondary', 'mb-1', 'ml-1');
+    upBtn.innerHTML = '<i class="fa fa-arrow-up"></i>';
+    upBtn.onclick = () => this.moveUp(todo.id);
+    row.children[3].appendChild(upBtn);
+
+    // Botón BAJAR (↓)
+    const downBtn = document.createElement('button');
+    downBtn.classList.add('btn', 'btn-secondary', 'mb-1', 'ml-1');
+    downBtn.innerHTML = '<i class="fa fa-arrow-down"></i>';
+    downBtn.onclick = () => this.moveDown(todo.id);
+    row.children[3].appendChild(downBtn);
   }
 }

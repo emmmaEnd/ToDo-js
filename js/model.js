@@ -23,6 +23,7 @@ export default class Model {
 
   save() {
     localStorage.setItem('todos', JSON.stringify(this.todos));
+    
   }
 
   getTodos() {
@@ -66,4 +67,21 @@ export default class Model {
     this.todos.splice(index, 1);  
     this.save();
   }
+
+  moveUp(id) {
+    const index = this.findTodo(id);
+    if (index > 0) {
+      [this.todos[index], this.todos[index - 1]] = [this.todos[index - 1], this.todos[index]];
+      this.save();
+    }
+  }
+  
+  moveDown(id) {
+    const index = this.findTodo(id);
+    if (index < this.todos.length - 1) {
+      [this.todos[index], this.todos[index + 1]] = [this.todos[index + 1], this.todos[index]];
+      this.save();
+    }
+  }
+  
 }
